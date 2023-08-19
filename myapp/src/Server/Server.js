@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path'); 
 const cors = require('cors');
-const { v4: uuidv4 } = require('uuid');
+
 
 const app = express();
 const port = 5000;
@@ -31,20 +31,22 @@ const Recipe = mongoose.model('Recipe', recipeSchema);
 
 // Create a new recipe
 app.post('/api/recipes', async (req, res) => {
-    try {
-      const newRecipe = {
-        _id: uuidv4(),
-        title: req.body.title,
-        ingredients: req.body.ingredients,
-        instructions: req.body.instructions,
-      };
-  
-      const createdRecipe = await Recipe.create(newRecipe);
-      res.status(201).json(createdRecipe);
-    } catch (error) {
-      res.status(500).json({ error: 'Could not add recipe' });
-    }
-  });
+  try {
+    const newRecipe = {
+      title: req.body.title,
+      ingredients: req.body.ingredients,
+      instructions: req.body.instructions,
+    };
+    
+
+    const createdRecipe = await Recipe.create(newRecipe);
+    res.status(201).json(createdRecipe);
+  } catch (error) {
+    console.error('Error adding recipe:', error); // Log the actual error
+    res.status(500).json({ error: 'Could not add recipe' });
+  }
+});
+
   
 
 // Get all recipes
@@ -75,9 +77,10 @@ app.delete('/api/recipes/:id', async (req, res) => {
 });
 
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../myapp/build/index.html'));
-  });
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../myapp/build/index.html'));
+});
+
   
   
 
