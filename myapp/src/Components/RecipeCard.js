@@ -35,7 +35,7 @@ function RecipeCard({ recipe, onDelete, onUpdate }) {
 
   
   return (
-    <Card>
+    <Card style={{ marginBottom: '10px' }}>
       <CardContent>
         
         

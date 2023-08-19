@@ -65,7 +65,7 @@ function App() {
     <div>
       <Header />
       <Container>
-        <h1>Recipe Sharing App</h1>
+        <h1>Share-Recipe</h1>
         <RecipeForm onAddRecipe={handleAddRecipe} /> {/* Use handleAddRecipe */}
         <div>
           {recipes.map((recipe) => (

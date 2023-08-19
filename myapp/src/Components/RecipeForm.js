@@ -37,23 +37,26 @@ function RecipeForm({ onAddRecipe }) {
       <TextField
         label="Title"
         value={title}
+        style={{ marginBottom: '10px' }}
         onChange={(e) => setTitle(e.target.value)}
         fullWidth
       />
       <TextField
         label="Ingredients "
         value={ingredients}
+        style={{ marginBottom: '10px' }}
         onChange={(e) => setIngredients(e.target.value)}
         fullWidth
       />
       <TextField
         label="Instructions"
         value={instructions}
+        style={{ marginBottom: '10px' }}
         onChange={(e) => setInstructions(e.target.value)}
         multiline
         fullWidth
       />
-      <Button type="submit" variant="contained" color="primary">
+      <Button type="submit" variant="contained" color="primary" style={{ marginBottom: '10px' }}>
         Add Recipe
       </Button>
     </form>

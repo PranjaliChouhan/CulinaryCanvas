@@ -7,7 +7,7 @@ function Header() {
   return (
     <AppBar position="static">
       <Toolbar>
-        <Typography variant="h6">Recipe Sharing App</Typography>
+        <Typography variant="h6">CulinaryCanvas</Typography>
       </Toolbar>
     </AppBar>
   );
