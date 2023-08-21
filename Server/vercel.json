@@ -1,0 +1,22 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "myapp/package.json",
+        "use": "@vercel/static-build",
+        "config": { "buildCommand": "npm install && npm run build" }
+      },
+      {
+        "src": "server/server.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      { "src": "/api/(.*)", "dest": "server.js" },
+      { "src": "/static/(.*)", "dest": "myapp/build/static/$1" },
+      
+      { "src": "/manifest.json", "dest": "myapp/build/manifest.json" },
+      { "src": "/(.*)", "dest": "myapp/build/index.html" }
+    ]
+  }
+  
